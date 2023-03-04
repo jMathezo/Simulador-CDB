@@ -1,0 +1,345 @@
+.section__product-simulate .simulator__container {
+  margin-bottom: 20px
+}
+
+.simulator {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 64px
+}
+
+.form-group__buttons, .simulator__control-item__buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+  .form-group__buttons .greg-button, .simulator__control-item__buttons .greg-button {
+    margin: 10px
+  }
+
+.form-control__text {
+  background: transparent;
+  border: none;
+  width: auto;
+  outline: none
+}
+
+@media (max-width: 767px) {
+  .simulator {
+    flex-direction: column;
+    align-items: center
+  }
+}
+
+.simulator__values .title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 500;
+  display: block
+}
+
+@media (max-width: 767px) {
+  .simulator__values .title {
+    font-size: 20px
+  }
+}
+
+@media (max-width: 380px) {
+  .simulator__values .title {
+    font-size: 18px
+  }
+}
+
+.simulator__values .value {
+  display: flex;
+  justify-content: space-between;
+  font-size: 48px;
+  line-height: 52px;
+  color: #111;
+  font-weight: 500;
+  width: 100%
+}
+
+  .simulator__values .value .form-control__text {
+    font-size: 48px;
+    line-height: 52px;
+    color: #111;
+    font-weight: 500;
+    width: 100%
+  }
+
+@media (max-width: 767px) {
+  .simulator__values .value .form-control__text {
+    font-size: 28px;
+    line-height: 30px
+  }
+}
+
+@media (max-width: 767px) {
+  .simulator__values .value {
+    font-size: 28px;
+    line-height: 30px
+  }
+}
+
+@media (max-width: 380px) {
+  .simulator__values .value span {
+    font-size: 22px
+  }
+
+  .simulator__values .value .form-control__text {
+    font-size: 22px
+  }
+}
+
+@media (max-width: 767px) {
+  .simulator__values--small-mobile {
+    width: 100%
+  }
+}
+
+.simulator__controls {
+  width: 50%
+}
+
+@media (max-width: 767px) {
+  .simulator__controls {
+    width: 100%
+  }
+}
+
+.simulator__control-item {
+  display: flex;
+  margin-bottom: 32px;
+  align-items: flex-end
+}
+
+@media (max-width: 767px) {
+  .simulator__control-item {
+    flex-direction: column
+  }
+}
+
+.simulator__control-item.simulator__control-item__vertical {
+  flex-direction: column;
+  align-items: stretch
+}
+
+  .simulator__control-item.simulator__control-item__vertical .value {
+    color: #111;
+    font-weight: 500
+  }
+
+@media (max-width: 767px) {
+  .simulator__control-item__buttons {
+    margin-top: -40px
+  }
+}
+
+.simulator__control-item__buttons .greg-button {
+  margin: 0 10px;
+  background: #3366CC
+}
+
+  .simulator__control-item__buttons .greg-button:hover {
+    background: #3366CC
+  }
+
+  .simulator__control-item__buttons .greg-button:active {
+    background: #99CCFF
+  }
+
+.simulator__results {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin-left: 80px
+}
+
+@media (max-width: 767px) {
+  .simulator__results {
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 40px
+  }
+}
+
+.simulator-main-result-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: #111;
+  margin-bottom: 16px
+}
+
+  .simulator-main-result-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 99%;
+    height: 4px;
+    background: #3366CC;
+    border-radius: 2px
+  }
+
+  .simulator-main-result-container .result-heading {
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 500;
+    margin-bottom: 16px
+  }
+
+@media (max-width: 767px) {
+  .simulator-main-result-container .result-heading {
+    font-size: 20px;
+    line-height: 22px
+  }
+}
+
+.simulator-main-result-container .result-value {
+  font-size: 64px;
+  line-height: 70px;
+  font-weight: 500;
+  margin-bottom: 8px
+}
+
+@media (max-width: 767px) {
+  .simulator-main-result-container .result-value {
+    font-size: 32px
+  }
+}
+
+.simulator-main-result-container .result-value.result-value-iframe {
+  font-size: 48px
+}
+
+.simulator-result-row {
+  display: flex;
+  align-items: flex-end;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: 500
+}
+
+.form-range {
+  -webkit-appearance: none;
+  margin: 20px 0;
+  width: 100%
+}
+
+  .form-range:focus {
+    outline: 0
+  }
+
+  .form-range::-webkit-slider-runnable-track {
+    cursor: pointer;
+    height: 4px;
+    transition: all .2s ease;
+    width: 100%;
+    background: #a1a1a1;
+    border: 1px solid #fff;
+    border-radius: 5px
+  }
+
+  .form-range::-webkit-slider-thumb {
+    background: #3366CC;
+    border: 4px solid #fff;
+    border-radius: 40px;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    -webkit-appearance: none;
+    margin-top: -19px
+  }
+
+  .form-range::-ms-track {
+    cursor: pointer;
+    height: 4px;
+    transition: all .2s ease;
+    width: 100%;
+    background: transparent;
+    border-color: transparent;
+    border-width: 20px 0;
+    color: transparent
+  }
+
+  .form-range::-ms-fill-lower {
+    background: #949494;
+    border: 1px solid #fff;
+    border-radius: 10px
+  }
+
+  .form-range::-ms-fill-upper {
+    background: #a1a1a1;
+    border: 1px solid #fff;
+    border-radius: 10px
+  }
+
+  .form-range::-ms-thumb {
+    background: #3366CC;
+    border: 4px solid #fff;
+    border-radius: 40px;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    margin-top: 0
+  }
+
+
+
+.greg-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  border: none;
+  background-color: #3366CC;
+  border-radius: 40px;
+  height: 55px;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: .2s ease;
+  cursor: pointer;
+  padding: 0 24px
+}
+
+  .greg-button:hover {
+    background-color: var(--color-secondary-dawn-light, #3366CC);
+    transition: .2s ease
+  }
+
+    .greg-button:hover .svg {
+      fill: var(--color-primary-white, #fff)
+    }
+
+  .greg-button[disabled] {
+    background-color: var(--color-secondary-grey-light, #D8D8D8);
+    cursor: default
+  }
+
+  .greg-button[small] {
+    height: 32px;
+    font-size: 12px;
+    line-height: 1.33;
+    padding: 0 16px
+  }
+
+    .greg-button[small]:before {
+      width: 12px;
+      height: 12px
+    }
+
+    .greg-button[small][circle] {
+      width: 32px;
+      padding: 0
+    }
+
+  .greg-button[circle] {
+    width: 48px;
+    padding: 0
+  }

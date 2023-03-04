@@ -1,0 +1,64 @@
+<h1 class="title">{{title}}</h1>
+
+<div class="alert alert-danger" *ngIf="error">
+{{error}}
+</div>
+
+<div class="simulator__container">
+  <div class="simulator">
+    <div class="simulator__controls">
+      <div class="simulator__control-item">
+        <div class="simulator__values simulator__values--small-mobile">
+          <h3 class="title">Valor do aporte inicial: </h3>
+          <span class="value">
+            <span>R$ </span>
+            <input type="text" class="form-control__text"
+                   id="aporteInicial"
+                   data-testid="aporteInicial"
+                   currencyMask
+                   [(ngModel)]="request.aporteInicial"
+                   (ngModelChange)="obterPrevisaoCDB()" />
+          </span>
+        </div>
+        <div class="simulator__control-item__buttons">
+          <button type="button" class="greg-button" (click)="atualizaValorAporte('adiciona')">+</button>
+          <button type="button" class="greg-button" (click)="atualizaValorAporte('subtrai')">-</button>
+        </div>
+      </div>
+      <div class="simulator__control-item">
+        <div class="simulator__values simulator__values--small-mobile">
+          <h3 class="title">Prazo em meses para retirada do investimento: </h3>
+          <span class="value">{{request.prazoParaResgate}} {{displayMes}}</span>
+          <div class="simulator__control-item__range">
+            <input class="form-range range" type="range"
+                   id="prazoParaResgate"
+                   data-testid="prazoParaResgate" 
+                   min="1" max="8" value="2" step="1"
+                   #range
+                   [(ngModel)]="request.prazoParaResgate"
+                   (ngModelChange)="setPrazoResgate(range.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="simulator__results">
+      <div class="simulator-main-result-container">
+        <h4 class="result-heading">Em {{displayMesResult}} {{displayMesExtensoResult}} você teria</h4>
+        <span class="result-value">
+          <span class="form-control__text">{{response.valorTotalInvestimentoLiquido | currency : 'BRL'}}</span>
+        </span>
+      </div>
+      <div class="simulator-result-row">Valor líquido com os impostos descontados</div>
+      <div class="simulator-result-row">
+        <span>
+          Total investido:
+          <span class="form-control__text">{{response.valorAporteInicial | currency : 'BRL'}}</span>
+        </span>
+      </div>
+      <div class="simulator-result-row">
+        <span class="result-row-first">
+          Valor do IR debitado:
+          <span class="form-control__text">{{response.valorIRDebitar | currency : 'BRL'}}</span>
+        </span>
+      </div>
+</div>
