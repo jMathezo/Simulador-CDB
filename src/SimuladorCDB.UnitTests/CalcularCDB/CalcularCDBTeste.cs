@@ -5,20 +5,19 @@ using SimuladorCDB.Domain.Services;
 
 namespace SimuladorCDB.UnitTests.CalcularCDB
 {
-    public class CalcularCDBTeste
+    public class CalcularCdbTeste
     {
         private readonly ICalcularCdbService _calcularCDB;
 
-        public CalcularCDBTeste()
+        public CalcularCdbTeste()
         {
             _calcularCDB = new CalcularCdbService();
-
         }
 
         [Theory]
         [InlineData(1000,1)]
         [Trait(nameof(ICalcularCdbService.CalcularPrevisaoCdb), "Success")]
-        public async void Dado_AporteInicial_PrazoInvestimento_Ate_6_meses_Deve_RetornarPrevisaoCDB(double valorAporteInicial, int prazoEmMeses)
+        public async Task Dado_AporteInicial_PrazoInvestimento_Ate_6_meses_Deve_RetornarPrevisaoCDB(double valorAporteInicial, int prazoEmMeses)
         {
             //Arrange
             var cdb = new Cdb(valorAporteInicial, prazoEmMeses);
