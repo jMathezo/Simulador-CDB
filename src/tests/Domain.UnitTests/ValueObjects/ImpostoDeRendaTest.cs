@@ -1,7 +1,6 @@
-﻿using SimuladorCDB.Domain.Services;
-using SimuladorCDB.Domain.ValueObjects;
+﻿using SimuladorCDB.Domain.ValueObjects;
 
-namespace SimuladorCDB.UnitTests.ValueObjects
+namespace SimuladorCDB.Domain.UnitTests.ValueObjects
 {
     public class ImpostoDeRendaTest
     {
@@ -10,7 +9,7 @@ namespace SimuladorCDB.UnitTests.ValueObjects
         [InlineData(9, 20)]
         [InlineData(19, 17.5)]
         [InlineData(30, 15)]
-        [Trait(nameof(ICalcularCdbService.CalcularPrevisaoCdb), "Success")]
+        [Trait(nameof(ImpostoDeRenda), "Success")]
         public void Dado_PrazodeInvestimento_Deve_Retornar_Percentual(int prazoEmMeses, double percentualADebitar)
         {
             //Arrange

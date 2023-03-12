@@ -1,6 +1,7 @@
 ﻿using SimuladorCDB.Application;
 using SimuladorCDB.Domain.Services;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -16,6 +17,10 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
             services.AddScoped<ICalcularCdbService, CalcularCdbService>();
+            services.AddMediatR(cfg => {
+                cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            });
+
             return services;
         }
     }
