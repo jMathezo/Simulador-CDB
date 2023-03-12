@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { CDBService } from '../services/cdb.service';
 import { PrevisaoCDBRequest } from '../models/previsaoCDBRequest';
 import { PrevisaoCDBResponse } from '../models/previsaoCDBResponse';
-import { ApiError } from '../models/apiError';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +16,6 @@ export class AppComponent {
 
   request = new PrevisaoCDBRequest(1000, 2);
   response = new PrevisaoCDBResponse(0, 0, 0, 0, 0, 0, 0);
-  apiError : Array<ApiError> = [];
   error = '';
 
   constructor(private cdbService: CDBService) {
@@ -104,13 +102,7 @@ export class AppComponent {
             this.response = data
           },
           error: (erro) => {
-            switch (erro.status) {
-              case 400:
-                this.apiError = erro.error;
-                this.apiError.forEach((error) => {
-                  this.error = error.errorMesage;
-                });
-            }
+            this.error = erro.error.Message;
           }
         }
       );

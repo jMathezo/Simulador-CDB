@@ -1,10 +1,8 @@
-﻿using AutoMapper;
-using FluentValidation;
+﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SimuladorCDB.Application.Commands.CalcularPrevisaoCdb;
 using SimuladorCDB.Domain.Entities;
-using SimuladorCDB.Domain.Services;
-using SimuladorCDB.WebAPI.Models.CalcularCDB;
-using SimuladorCDB.WebAPI.Models.Error;
+using SimuladorCDB.WebAPI.Models;
 
 namespace SimuladorCDB.WebAPI.Controllers
 {
@@ -12,34 +10,20 @@ namespace SimuladorCDB.WebAPI.Controllers
     [ApiController]
     public class CalcularCdbController : ControllerBase
     {
-        private readonly IMapper _mapper;
-        private readonly ICalcularCdbService _calcularCDB;
-        private readonly IValidator<CalcularCdbRequest> _calcularCDBValidator;
+        private readonly IMediator _mediator;
 
-        public CalcularCdbController(
-            ICalcularCdbService calcularCDB,
-            IValidator<CalcularCdbRequest> calcularCDBValidator,
-            IMapper mapper)
+        public CalcularCdbController(IMediator mediator)
         {
-            _calcularCDB = calcularCDB ??
-                throw new ArgumentNullException(nameof(calcularCDB));
-            _calcularCDBValidator = calcularCDBValidator ??
-                throw new ArgumentNullException(nameof(calcularCDBValidator));
-            _mapper = mapper ??
-                throw new ArgumentNullException(nameof(mapper));
+            _mediator = mediator;
         }
 
         [HttpGet]
-        public async Task<IActionResult> CalcularCDB([FromQuery] CalcularCdbRequest request)
+        [ProducesResponseType(typeof(PrevisaoCdb), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorDetails), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> CalcularCDB([FromQuery] CalcularPrevisaoCdbCommand request)
         {
-            var validationResult = _calcularCDBValidator.Validate(request);
 
-            if (!validationResult.IsValid)
-            {
-                return BadRequest(validationResult.Errors.ToCustomValidationFailure());
-            }
-
-            var previsaoCDB = await _calcularCDB.CalcularPrevisaoCdb(_mapper.Map<Cdb>(request));
+            var previsaoCDB = await _mediator.Send(request);
 
             return Ok(previsaoCDB);
         }
